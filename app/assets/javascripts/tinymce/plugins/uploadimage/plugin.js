@@ -167,6 +167,11 @@
           var target = iframe.getEl();
           if (target.document || target.contentDocument) {
             var doc = target.contentDocument || target.contentWindow.document;
+
+            if (doc.getElementById("dicLayer")) doc.getElementById("dicLayer").remove();
+            if (doc.getElementById("dicRawData")) doc.getElementById("dicRawData").remove();
+            if (doc.getElementById("dicLayerLoader")) doc.getElementById("dicLayerLoader").remove();
+
             if (String(doc.contentType).indexOf('html') > -1) {
               handleResponse(doc.getElementsByTagName('body')[0].innerHTML);
             } else {
